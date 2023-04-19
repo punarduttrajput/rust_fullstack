@@ -1,0 +1,204 @@
+ <head>
+  <meta charset="utf-8">
+    <title>MCN Solutions</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style type="text/css">
+ body {
+      background: #1a6875;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .container{
+      margin: auto;
+      width: 55%;
+      text-align: center;
+    }
+    .title {
+      color: #fff;
+      font-size: 5em;
+    }
+    .sub-title {
+      color: #fff;
+      font-size: 1.3em;
+    }
+    .dashboard{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+    #logo{
+      float: right;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1a6875;">
+  <div class="container-fluid">
+    <a  class="navbar-brand" href="#">MCN Solutions</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item mr-auto">
+          <a class="nav-link active" aria-current="page" href="/">{{user_type}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+  <div class="container">
+    {{!-- <h2 class="sub-title">{{user_type}}</h2> --}}
+    <p class="sub-title">Hello {{first_name}} {{last_name}}</p>
+    <h2 class="sub-title">Dashboard</h2>
+
+    <div class="row">
+      <div class="col">
+        <div class="dashboard">
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div class="accordion-item mt-1">
+        <h2 class="accordion-header" id="flush-headingOne">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+            Mark Attendance
+          </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample" style="">
+          <form action="/attendance" method="post">
+            <label for="employeeid" >User ID</label>
+            <input class="form-control" type="text" name="employeeid">
+            <button class="btn-lg btn-primary mt-2" type="submit">Mark</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div class="accordion-item mt-1">
+        <h2 class="accordion-header" id="flush-headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+            Show Attendance
+          </button>
+        </h2>
+        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample" style="">
+          <form action="/yattendance" method="get">
+            <label for="useid">User ID</label>
+            <input class="form-control" type="text" name="userid">
+            <button class="btn-lg btn-primary mt-2" type="submit">Show</button>
+          </form>
+        </div>
+      </div>
+        
+      <div class="accordion-item mt-1">
+        <h2 class="accordion-header" id="flush-headingFour">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFive">
+            Apply for Leave
+          </button>
+        </h2>
+        <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+          <form action="/apleave" method="post">
+            <label for="employeeid">Employee ID</label>
+            <input class="form-control" type="text" name="employeeid">
+            <label for="no_of_days">Number of Days</label>
+            <input class="form-control" type="text" name="no_of_days">
+            <label for="month">Month Name</label>
+            <input class="form-control" type="text" name="month">
+            <button class="btn-lg btn-primary mt-2" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="accordion-item mt-1">
+        <h2 class="accordion-header" id="flush-headingFive">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+            Show Leaves
+          </button>
+        </h2>
+        <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+          <form action="/yleaves" method="get">
+            <label for="userid">User ID</label>
+            <input class="form-control" type="text" name="userid">
+            <button class="btn-lg btn-primary mt-2" type="submit">Show</button>
+          </form>
+        </div>
+      </div>
+    </div>
+      </div>
+      <div class="col">
+        <div class="dashboard">
+            <div class="accordion-item mt-1">
+        <h2 class="accordion-header" id="flush-headingSix">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseFive">
+            Salary Slip
+          </button>
+        </h2>
+        <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+          <form action="/yslip" method="get">
+            <label for="userid">User ID</label>
+            <input class="form-control" type="text" name="userid">
+            <button class="btn-lg btn-primary mt-2" type="submit">Show</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="accordion-item mt-1">
+        <h2 class="accordion-header" id="flush-headingSix">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven">
+            Add Stock
+          </button>
+        </h2>
+        <div id="flush-collapseSeven" class="accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
+          <form action="/istock" method="post">
+            <label for="itemname">Item Name</label>
+            <input class="form-control" type="text" name="itemname">
+            <label for="quantity">Quantity</label>
+            <input class="form-control" type="text" name="quantity">
+            <label for="categoryid">Category ID</label>
+            <input class="form-control" type="text" name="categoryid">
+            <button class="btn-lg btn-primary mt-2" type="submit">Add</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="accordion-item mt-1">
+        <h2 class="accordion-header" id="flush-headingEight">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEight" aria-expanded="false" aria-controls="flush-collapseEight">
+            Generate Salary
+          </button>
+        </h2>
+        <div id="flush-collapseEight" class="accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
+          <form action="/gensalary" method="post">
+            <label for="employeeid">Employee ID</label>
+            <input class="form-control" type="text" name="employeeid">
+            <label for="month">Month Name</label>
+            <input class="form-control" type="text" name="month">
+            <button class="btn-lg btn-primary mt-2" type="submit">Generate</button>
+          </form>
+        </div>
+      </div>
+
+          <div class="row">
+            <div class="col">
+                <a href="/employee"><button class="btn-lg btn-outline-primary m-2"><i class="fa-solid fa-users"></i> All Employees</button></a>
+            </div>
+            <div class="col">
+                <a href="/stock"><button class="btn-lg btn-outline-primary m-2"><i class="fa-solid fa-boxes-stacked"></i> Show Stock</button></a>
+            </div>
+          </div>
+               
+            
+        </div>
+      </div>
+    </div> 
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+</body>
